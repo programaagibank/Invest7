@@ -38,10 +38,7 @@ O Simulador de Investimentos é uma aplicação que permite aos usuários simula
 
 ### Configuração do Banco de Dados
 ```sql
-CREATE DATABASE simulador_investimentos;
-CREATE USER 'simulador_app'@'localhost' IDENTIFIED BY 'senha_secreta';
-GRANT ALL PRIVILEGES ON simulador_investimentos.* TO 'simulador_app'@'localhost';
-FLUSH PRIVILEGES;
+.....
 ```
 
 ## 🔄 Fluxo de Trabalho da Metodologia Ágil
