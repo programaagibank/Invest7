@@ -17,7 +17,7 @@ public class Main {
         MenuInicial menuInicial = new MenuInicial();
 
         System.out.println(CIANO + " ||=========================================================||" + RESET);
-        System.out.println(CIANO + " *********** Bem vindo ao AgInvest: *********** " + RESET);
+        System.out.println(CIANO + " ***********Olá. Bem vindo ao Invest7: *********** " + RESET);
 
         menuInicial.exibirMenuInicial();
 
