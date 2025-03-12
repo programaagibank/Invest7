@@ -13,7 +13,7 @@ public class MenuPrincipal {
             System.out.println("2- Fazer Simulação por Perfil");
             System.out.println("3- FAQ");
             System.out.println("4- Atualizar dados cadastrais");
-            System.out.println("Digite 'fim' para sair");
+            System.out.println("Digite 'fim' para sair!");
             escolhas = sc.next();
 
             switch (escolhas) {
