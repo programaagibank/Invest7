@@ -5,18 +5,18 @@ import com.invest7.model.UserLogin;
 
 public class AuthController {
 
-    public String login(String email, String senha) {
+    public boolean login(String email, String senha) {
         UserLoginDAO userDAO = new UserLoginDAO();
         UserLogin userLogin = userDAO.findUserByEmail(email);
 
         if (userLogin == null) {
-            return "Usuário não encontrado!";
+            return false;
         }
 
         if (userLogin.getSenha().equals(senha)) {
-            return "Login bem-sucedido para " + userLogin.getEmail();
+            return true;
         } else {
-            return "Senha incorreta!";
+            return false;
         }
     }
 }

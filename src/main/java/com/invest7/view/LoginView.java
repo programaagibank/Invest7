@@ -9,6 +9,7 @@ public class LoginView {
         String email;
         String senha;
         Scanner sc = new Scanner(System.in);
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
 
         System.out.println("Tela de Login!!!");
         System.out.println();
@@ -19,8 +20,13 @@ public class LoginView {
         senha = sc.nextLine();
 
         AuthController authController = new AuthController();
-        String resultado = authController.login(email,senha);
+        boolean resultado = authController.login(email,senha);
 
-        System.out.println(resultado);
+        if (!resultado){
+            System.out.println("usuario nao encontrado");
+        } else {
+            menuPrincipal.ExibirMenuPrincipal();
+        }
+
     }
 }

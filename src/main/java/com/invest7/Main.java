@@ -20,7 +20,9 @@ public class Main {
         System.out.println(CIANO + " ***********Olá. Bem vindo ao Invest7: *********** " + RESET);
 
         menuInicial.exibirMenuInicial();
-
+        System.out.println();
+        System.out.println(VERMELHO + " ||=========================================================||" + RESET);
+        System.out.println(VERMELHO + " Obrigado por usar o nosso sistema, volte mais vezes!! " + RESET);
 
 
     }
