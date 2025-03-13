@@ -18,6 +18,7 @@ public class MenuPerfilArrojado {
         System.out.println("Digite o número de meses para a simulação: ");
         int meses = sc.nextInt();
         double impRenda = cF.calculoImpRenda(meses);
+        double impRendaRV = 0.15;
         exibeRF(impRenda, meses);
 
         /* - Os métodos ainda vão mudar, porque vamos usar os valores direto do BD e imprimirá uma matriz
@@ -56,9 +57,10 @@ public class MenuPerfilArrojado {
         cF.imprNIsento(rBrutoCDBpos, rLiqCDBpos, impRenda, 0.105);
     }
 
-    public static void exibeRV(double impRenda, int meses) {
+    public static void exibeRV(double impRendaRV, int meses) {
         System.out.println("++++Renda Variável++++");
         System.out.println("+++Fundos Imobiliários+++");
+        
 
 
     }
