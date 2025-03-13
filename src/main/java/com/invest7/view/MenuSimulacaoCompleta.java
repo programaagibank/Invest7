@@ -13,19 +13,19 @@ public class MenuSimulacaoCompleta {
 
         while (!digitoCerto) {
             System.out.println("1- Digite um Capital inicial: ");
-            if (sc.hasNextDouble()) { // Verifica se a entrada é um número válido
+            if (sc.hasNextDouble()) {
                 capital = sc.nextDouble();
-                digitoCerto = true; // Sai do loop se o valor for válido
+                digitoCerto = true;
             } else {
                 System.out.println("Valor Incorreto, digite novamente...");
-                sc.next(); // Descarta a entrada inválida
+                sc.next();
             }
         }
 
         digitoCerto = false;
         while (!digitoCerto) {
             System.out.println("2- Digite um valor para aporte mensal: ");
-            if (sc.hasNextDouble()) { // Verifica se a entrada é um número válido
+            if (sc.hasNextDouble()) {
                 aporteMensal = sc.nextDouble();
                 digitoCerto = true;
             } else {
@@ -37,12 +37,12 @@ public class MenuSimulacaoCompleta {
         digitoCerto = false;
         while (!digitoCerto) {
             System.out.println("3- Digite um prazo para a simulacao: ");
-            if (sc.hasNextInt()) { // Verifica se a entrada é um número válido
+            if (sc.hasNextInt()) {
                 prazo = sc.nextInt();
-                digitoCerto = true; // Sai do loop se o valor for válido
+                digitoCerto = true;
             } else {
                 System.out.println("Valor Incorreto, digite novamente...");
-                sc.next(); // Descarta a entrada inválida
+                sc.next();
             }
         }
 

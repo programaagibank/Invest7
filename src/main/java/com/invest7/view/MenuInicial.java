@@ -24,7 +24,7 @@ public class MenuInicial {
                     break;
                 case "2":
                     CadastroView cadastroView = new CadastroView();
-                    System.out.println("Cadastro selecionado");
+                    cadastroView.CriarUsuario();
                     break;
                 case "3":
                     // Código para fazer prévia de simulação
