@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class MenuPerfilArrojado {
     static Scanner sc = new Scanner(System.in);
-    static CalculadoraRFprovisoria cF = new CalculadoraRFprovisoria();
+    static CalculadoraRFprovisoria cf = new CalculadoraRFprovisoria();
 
     public static void simulacaoPerfilArrojado() {
 
@@ -17,13 +17,12 @@ public class MenuPerfilArrojado {
         System.out.println("=====Simulação de Perfil Arrojado=====");
         System.out.println("Digite o número de meses para a simulação: ");
         int meses = sc.nextInt();
-        double impRenda = cF.calculoImpRenda(meses);
-        double impRendaRV = 0.15;
+        double impRenda = cf.calculoImpRenda(meses);
         exibeRF(impRenda, meses);
 
-        /* - Os métodos ainda vão mudar, porque vamos usar os valores direto do BD e imprimirá uma matriz
-           - Precisa definir os preços das ações e cotas FIIs para acrescentar os métodos de RV*/
+        double impRendaRV = 0.15;
 
+        /* Os métodos são provisórios*/
 
     }
 
@@ -37,30 +36,35 @@ public class MenuPerfilArrojado {
 
         System.out.println("+++Juros Pré Fixados+++");
         System.out.println("--CRI--");
-        double rBrutoCRI = cF.calculoRendBruto(valorInicial, aporteRF, 0.07, meses);
-        cF.imprIsento(rBrutoCRI,0.07 );
+        double rBrutoCRI = cf.calculoRendBruto(valorInicial, aporteRF, 0.07, meses);
+        cf.imprIsento(rBrutoCRI,0.07 );
+
         System.out.println("--LCA--");
-        double rBrutoLCA = cF.calculoRendBruto(valorInicial, aporteRF, 0.1478, meses);
-        cF.imprIsento(rBrutoLCA,0.1478 );
+        double rBrutoLCA = cf.calculoRendBruto(valorInicial, aporteRF, 0.1478, meses);
+        cf.imprIsento(rBrutoLCA,0.1478 );
+
         System.out.println("--CDB Agibank--");
-        double rBrutoCDB = cF.calculoRendBruto(valorInicial, aporteRF, 0.125, meses);
-        double rLiqCDB = cF.calculoRendLiq(rBrutoCDB, valorInicial, impRenda);
-        cF.imprNIsento(rBrutoCDB, rLiqCDB, impRenda, 0.125);
+        double rBrutoCDB = cf.calculoRendBruto(valorInicial, aporteRF, 0.125, meses);
+        double rLiqCDB = cf.calculoRendLiq(rBrutoCDB, valorInicial, impRenda);
+        cf.imprNIsento(rBrutoCDB, rLiqCDB, impRenda, 0.125);
 
         System.out.println("+++Juros Pós Fixados+++");
         System.out.println("\n--CRI--");
-        double rBrutoCRIpos = cF.calculoRendBruto(valorInicial, aporteRF, 0.06, meses);
-        cF.imprIsento(rBrutoCRIpos,0.06 );
+        double rBrutoCRIpos = cf.calculoRendBruto(valorInicial, aporteRF, 0.06, meses);
+        cf.imprIsento(rBrutoCRIpos,0.06 );
+        System.out.println("--LCA--");
+        double rBrutoLCApos = cf.calculoRendBruto(valorInicial, aporteRF, 0.12, meses);
+        cf.imprIsento(rBrutoLCApos,0.12 );
         System.out.println("\n--CDB Agibank--");
-        double rBrutoCDBpos = cF.calculoRendBruto(valorInicial, aporteRF, 0.105, meses);
-        double rLiqCDBpos = cF.calculoRendLiq(rBrutoCDBpos, valorInicial, impRenda);
-        cF.imprNIsento(rBrutoCDBpos, rLiqCDBpos, impRenda, 0.105);
+        double rBrutoCDBpos = cf.calculoRendBruto(valorInicial, aporteRF, 0.105, meses);
+        double rLiqCDBpos = cf.calculoRendLiq(rBrutoCDBpos, valorInicial, impRenda);
+        cf.imprNIsento(rBrutoCDBpos, rLiqCDBpos, impRenda, 0.105);
     }
 
     public static void exibeRV(double impRendaRV, int meses) {
         System.out.println("++++Renda Variável++++");
         System.out.println("+++Fundos Imobiliários+++");
-        
+
 
 
     }
