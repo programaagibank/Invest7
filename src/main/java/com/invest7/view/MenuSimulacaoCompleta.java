@@ -45,8 +45,7 @@ public class MenuSimulacaoCompleta {
                 sc.next(); // Descarta a entrada inválida
             }
         }
-
-
+        
         System.out.println(capital);
         System.out.println(aporteMensal);
         System.out.println(prazo );
