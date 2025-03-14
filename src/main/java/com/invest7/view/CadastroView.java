@@ -7,19 +7,25 @@ import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import com.invest7.controller.CpfValidate;
-
+import com.invest7.controller.HashSenha;
+import com.invest7.controller.UserCreateController;
 
 
 public class CadastroView {
     public void CriarUsuario(){
         Scanner sc = new Scanner(System.in);
-        String nome, cpf, endereco, idade, email, senha;
-        Date data_nasc;
-        DataValidate data = new DataValidate();;
+        String nome = null, cpf = null, endereco = null, genero = null, email = null, senha = null, senhaHash = null;
+        Date data_nasc = null;
+        DataValidate data = new DataValidate();
+        HashSenha senhacrip = new HashSenha();
+        String escolha = null;
+        int opcaoGenero = 0;
         boolean digitoCerto = false;
+        UserCreateController userCreate = new UserCreateController();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         System.out.println("-----------TELA DE CADASTRO--------");
+
 
         while (!digitoCerto) {
             System.out.println("1- Digite o seu nome: ");
@@ -27,24 +33,29 @@ public class CadastroView {
                  nome = sc.nextLine();
                 digitoCerto = true;
             } else {
-                System.out.println("Valor Incorreto, digite novamente...");
+                System.out.println("Nome Incorreto, digite novamente...");
                 sc.next();
             }
         }
-       digitoCerto = false;
-        while (!digitoCerto) {
+
+        boolean resultadoCPF = true;
+        while (resultadoCPF) {
             System.out.println("2- Digite o seu CPF: ");
             cpf = sc.nextLine();
             String cpfValidado = CpfValidate.validaCpf(cpf);
+
             if (cpfValidado != null) {
-                digitoCerto = true;
-                System.out.println("CPF válido! Continuando cadastro...");
+                boolean cpfExiste = userCreate.verificaCPF(cpfValidado);
+
+                if (cpfExiste) {
+                    System.out.println("CPF já cadastrado. Tente novamente.");
+                } else {
+                    resultadoCPF = false;
+                }
             } else {
                 System.out.println("CPF inválido! Tente novamente.");
             }
         }
-
-
 
         digitoCerto = false;
         while (!digitoCerto) {
@@ -53,22 +64,92 @@ public class CadastroView {
                 endereco = sc.nextLine();
                 digitoCerto = true;
             } else {
-                System.out.println("Valor Incorreto, digite novamente...");
+                System.out.println("Endereco Incorreto, digite novamente...");
                 sc.next();
             }
         }
-        data_nasc = null; // Inicializa a variável antes do loop
 
         while (data_nasc == null) {
-            System.out.print("Digite uma data (no formato dd/MM/yyyy): ");
+            System.out.println("4- Digite uma data (no formato dd/MM/yyyy): ");
             String dataString = sc.nextLine();
 
             // Valida a data
             data_nasc = data.validarData(dataString);
         }
 
-        System.out.println("Data válida recebida: " + data_nasc); // Confirmação opcional
+        digitoCerto = false;
+        while (!digitoCerto) {
+            System.out.println("5- Qual seu genero: ");
+            System.out.println("1- masculino");
+            System.out.println("2- feminino");
+            System.out.println("3- Outros");
+
+            if (sc.hasNextInt()) {
+                opcaoGenero = sc.nextInt();
+                sc.nextLine();
+                switch (opcaoGenero) {
+                    case 1:
+                        genero = "Masculino";
+                        digitoCerto = true;
+                        break;
+                    case 2:
+                        genero = "Feminino";
+                        digitoCerto = true;
+                        break;
+                    case 3:
+                        genero = "Outros";
+                        digitoCerto = true;
+                        break;
+                    default:
+                        System.out.println("Opcao invalida, digite novamente...");
+                        break;
+                }
+            }else{
+                System.out.println("Digite o numero da opcao...");
+               sc.next();
+            }
+        }
+
+        boolean resultadoEmail = true;
+        while (resultadoEmail) {
+            System.out.println("6- Digite o seu email: ");
+            email = sc.nextLine();
+            if (validarEmail(email)) {
+                boolean emailExiste = userCreate.verificaEmail(email);
+                if (emailExiste) {
+                    System.out.println("Email já cadastrado. Tente novamente.");
+                } else {
+                    resultadoEmail = false;
+                }
+            } else {
+                System.out.println("Email inválido! O email deve conter '@' e um domínio válido. Tente novamente.");
+            }
+        }
 
 
+        do {
+            System.out.println("7- Digite a sua senha: ");
+            senha = sc.nextLine();
+            System.out.println("Confirme a sua senha: ");
+            escolha = sc.nextLine();
+
+            if (!senha.equals(escolha)) {
+                System.out.println("As senhas não coincidem. Tente novamente.");
+            }
+
+        } while (!senha.equals(escolha));
+
+
+        senhaHash = senhacrip.hashSenha(senha);
+        System.out.print("senha " + senha + " = senha criptografada = " + senhaHash);
+        System.out.println();
+
+        boolean resultadoCliente = false;
+        resultadoCliente = userCreate.criarUser(nome, email, senhaHash, cpf, endereco,genero, data_nasc );
+
+    }
+
+    public boolean validarEmail(String email) {
+        return email != null && email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
 }
