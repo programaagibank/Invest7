@@ -14,13 +14,14 @@ import com.invest7.controller.UserCreateController;
 public class CadastroView {
     public void CriarUsuario(){
         Scanner sc = new Scanner(System.in);
-        String nome = null, cpf = null, endereco = null, genero = null, email = null, senha = null, senhaHash = null;
+        String nome = null,dataString=null, cpf = null, endereco = null, genero = null, email = null, senha = null, senhaHash = null;
         Date data_nasc = null;
         DataValidate data = new DataValidate();
         HashSenha senhacrip = new HashSenha();
         String escolha = null;
         int opcaoGenero = 0;
         boolean digitoCerto = false;
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
         UserCreateController userCreate = new UserCreateController();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -70,11 +71,11 @@ public class CadastroView {
         }
 
         while (data_nasc == null) {
-            System.out.println("4- Digite uma data (no formato dd/MM/yyyy): ");
-            String dataString = sc.nextLine();
+            System.out.println("4- Digite uma data (no formato yyyy/MM/dd): ");
+            dataString = sc.nextLine();
 
             // Valida a data
-            data_nasc = data.validarData(dataString);
+            dataString= data.validarData(dataString);
         }
 
         digitoCerto = false;
@@ -144,8 +145,13 @@ public class CadastroView {
         System.out.print("senha " + senha + " = senha criptografada = " + senhaHash);
         System.out.println();
 
-        boolean resultadoCliente = false;
-        resultadoCliente = userCreate.criarUser(nome, email, senhaHash, cpf, endereco,genero, data_nasc );
+        boolean    resultadoCliente = userCreate.criarUser(nome, email, senhaHash, cpf, endereco,genero, dataString);
+        if (!resultadoCliente) {
+            System.out.println("Por algum motivo deu erro, faça o cadastro novamente!!");
+        } else {
+            menuPrincipal.ExibirMenuPrincipal();
+        }
+
 
     }
 
