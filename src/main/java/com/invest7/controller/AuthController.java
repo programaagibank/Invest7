@@ -2,7 +2,7 @@ package com.invest7.controller;
 
 import com.invest7.dao.UserLoginDAO;
 import com.invest7.model.UserLogin;
-
+import at.favre.lib.crypto.bcrypt.BCrypt;
 public class AuthController {
 
     public boolean login(String email, String senha) {
@@ -13,7 +13,7 @@ public class AuthController {
             return false;
         }
 
-        if (userLogin.getSenha().equals(senha)) {
+        if (BCrypt.verifyer().verify(senha.toCharArray(), userLogin.getSenha()).verified) {
             return true;
         } else {
             return false;
