@@ -14,8 +14,7 @@ import com.invest7.controller.UserCreateController;
 public class CadastroView {
     public void CriarUsuario(){
         Scanner sc = new Scanner(System.in);
-        String nome = null,dataString=null, cpf = null, endereco = null, genero = null, email = null, senha = null, senhaHash = null;
-        Date data_nasc = null;
+        String nome = null,dataString=null, cpf = null, endereco = null, genero = null, email = null, senha = null, senhaHash = null, data_nasc = null;
         DataValidate data = new DataValidate();
         HashSenha senhacrip = new HashSenha();
         String escolha = null;
@@ -23,7 +22,7 @@ public class CadastroView {
         boolean digitoCerto = false;
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         UserCreateController userCreate = new UserCreateController();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
         System.out.println("-----------TELA DE CADASTRO--------");
 
@@ -69,14 +68,16 @@ public class CadastroView {
                 sc.next();
             }
         }
+             do  {
+                System.out.println("4- Digite uma data (no formato yyyy/MM/dd): ");
+                dataString = sc.nextLine();
 
-        while (data_nasc == null) {
-            System.out.println("4- Digite uma data (no formato yyyy/MM/dd): ");
-            dataString = sc.nextLine();
-
-            // Valida a data
-            dataString= data.validarData(dataString);
-        }
+                // Valida a data
+                data_nasc = data.validarData(dataString);
+                 if (data_nasc == null) {
+                     System.out.println("Data inválida. Por favor, tente novamente.");
+                 }
+            }while (data_nasc == null);
 
         digitoCerto = false;
         while (!digitoCerto) {
@@ -141,14 +142,14 @@ public class CadastroView {
         } while (!senha.equals(escolha));
 
 
-        senhaHash = senhacrip.hashSenha(senha);
-        System.out.print("senha " + senha + " = senha criptografada = " + senhaHash);
-        System.out.println();
+        senhaHash = senhacrip.hashSenha(senha); //passa a senha cadastrada e transforma em hash
 
-        boolean    resultadoCliente = userCreate.criarUser(nome, email, senhaHash, cpf, endereco,genero, dataString);
+
+        boolean    resultadoCliente = userCreate.criarUser(nome, email, senhaHash, cpf, endereco,genero, data_nasc);
         if (!resultadoCliente) {
             System.out.println("Por algum motivo deu erro, faça o cadastro novamente!!");
         } else {
+            System.out.println("usuario cadastrado!!! ");
             menuPrincipal.ExibirMenuPrincipal();
         }
 

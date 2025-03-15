@@ -16,7 +16,7 @@ public class DataValidate {
             dt_str = dateFormat.format(data);
         } catch (ParseException e) {
             // Caso a data não esteja no formato correto, exibe uma mensagem de erro
-            System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            System.out.println("Formato de data inválido. Use o formato yyyy/MM/dd.");
         }
 
         return dt_str;
