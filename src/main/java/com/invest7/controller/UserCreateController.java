@@ -17,11 +17,12 @@ public class UserCreateController {
         return cpfCliente.verificaEmail(email);
     }
 
-    public boolean criarUser(String nome, String email, String senha, String cpf, String endereco,String genero, Date dt_nasc){
+    public boolean criarUser(String nome, String email, String senha, String cpf, String endereco,String genero, String dt_nasc){
         UserCreateDAO userDAO = new UserCreateDAO();
-        //UserCreate user = userDAO.createUser(nome, email, senha, cpf, endereco, genero, dt_nasc);
+        boolean user = userDAO.createUser(nome, email, senha, cpf, endereco, genero, dt_nasc);
 
+        if (user){return true;}
+        else return false;
 
-        return true;
     }
 }
