@@ -3,7 +3,6 @@ package com.invest7.view;
 import java.util.Scanner;
 
 public class MenuInicial {
-
     public void exibirMenuInicial(){
         Scanner sc = new Scanner(System.in);
 
@@ -46,4 +45,5 @@ public class MenuInicial {
         sc.close();
 
     }
+
 }
