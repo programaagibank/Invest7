@@ -30,7 +30,7 @@ public class CalculadoraVariavel {
             }
         }
 
-        //return
+        return null;
     }
 
     public static void simularAcao(Scanner sc, DecimalFormat df) {
