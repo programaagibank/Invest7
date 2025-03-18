@@ -38,6 +38,8 @@ public class CadastroView {
             }
         }
 
+
+
         boolean resultadoCPF = true;
         while (resultadoCPF) {
             System.out.println("2- Digite o seu CPF: ");
@@ -57,6 +59,8 @@ public class CadastroView {
             }
         }
 
+
+
         digitoCerto = false;
         while (!digitoCerto) {
             System.out.println("3- Digite o seu endereco: ");
@@ -68,6 +72,8 @@ public class CadastroView {
                 sc.next();
             }
         }
+
+
              do  {
                 System.out.println("4- Digite uma data (no formato yyyy/MM/dd): ");
                 dataString = sc.nextLine();
@@ -78,6 +84,8 @@ public class CadastroView {
                      System.out.println("Data inválida. Por favor, tente novamente.");
                  }
             }while (data_nasc == null);
+
+
 
         digitoCerto = false;
         while (!digitoCerto) {

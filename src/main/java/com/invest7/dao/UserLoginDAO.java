@@ -25,7 +25,6 @@ public class UserLoginDAO {
                             rs.getString("email"),
                             rs.getString("senha")
                     );
-                    System.out.println("ID do usuário recuperado do banco de dados: " + rs.getInt("id_user"));
                 }
             }
         } catch (SQLException e) {  // Captura apenas SQLException

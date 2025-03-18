@@ -19,10 +19,12 @@ public class UserCreateController {
 
     public boolean criarUser(String nome, String email, String senha, String cpf, String endereco,String genero, String dt_nasc){
         UserCreateDAO userDAO = new UserCreateDAO();
-        boolean user = userDAO.createUser(nome, email, senha, cpf, endereco, genero, dt_nasc);
+        int userId = userDAO.createUser(nome, email, senha, cpf, endereco, genero, dt_nasc);
 
-        if (user){return true;}
-        else return false;
+        if (userId > 0){
+            UserSession.setLoggedInUserId(userId);
+            return true;
+        } else return false;
 
     }
 }
