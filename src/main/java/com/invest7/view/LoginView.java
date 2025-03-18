@@ -1,6 +1,6 @@
 package com.invest7.view;
 
-import com.invest7.controller.AuthController;
+import com.invest7.controller.UserController;
 
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class LoginView {
         System.out.println("Digite sua senha ");
         senha = sc.nextLine();
 
-        AuthController authController = new AuthController();
+        UserController authController = new UserController();
         String resultado = authController.login(email,senha);
 
         if (resultado== null){

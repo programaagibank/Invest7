@@ -1,9 +1,7 @@
 package com.invest7.view;
 
-import com.invest7.controller.AuthController;
-import com.invest7.controller.UserReadController;
-import com.invest7.controller.UserUpdateController;
-import com.invest7.model.UserRead;
+import com.invest7.controller.UserController;
+import com.invest7.model.UserModel;
 
 import java.util.Scanner;
 
@@ -37,16 +35,16 @@ public class MenuPrincipal {
                         // fazer FAQ
                     break;
                 case "4":
-                    UserReadController userReadC = new UserReadController();
-                    UserRead userRead = userReadC.lerUser();
-                    if (userRead != null) {
+                    UserController userC = new UserController();
+                    UserModel userR = userC.lerUser();
+                    if (userR != null) {
                         System.out.println("Usuário encontrado:");
-                        System.out.println("Nome: " + userRead.getNome());
-                        System.out.println("Email: " + userRead.getEmail());
-                        System.out.println("CPF: " + userRead.getCpf());
-                        System.out.println("Gênero: " + userRead.getGenero());
-                        System.out.println("Endereço: " + userRead.getEndereco());
-                        System.out.println("Data de Nascimento: " + userRead.getDt_nasc());
+                        System.out.println("Nome: " + userR.getNome());
+                        System.out.println("Email: " + userR.getEmail());
+                        System.out.println("CPF: " + userR.getCpf());
+                        System.out.println("Gênero: " + userR.getGenero());
+                        System.out.println("Endereço: " + userR.getEndereco());
+                        System.out.println("Data de Nascimento: " + userR.getDt_nasc());
                     }  else {
                         System.out.println("Usuário não encontrado.");
                     }
@@ -61,7 +59,8 @@ public class MenuPrincipal {
 
                     break;
                 case "7":
-                    AuthController user = new AuthController();
+                   // AuthController user = new AuthController();
+                    UserController user = new UserController();
                     user.logout();
 
                     break;
