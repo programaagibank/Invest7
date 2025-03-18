@@ -24,9 +24,9 @@ public class UserReadDAO {
                     user = new UserRead(
                             rs.getString("nome"),
                             rs.getString("email"),
+                            rs.getString("cpf"),
                             rs.getString("genero"),
                             rs.getString("endereco"),
-                            rs.getString("cpf"),
                             rs.getDate("data_nascimento")
 
 

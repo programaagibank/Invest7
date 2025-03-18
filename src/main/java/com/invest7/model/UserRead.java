@@ -7,7 +7,7 @@ public class UserRead {
     private String nome = null, cpf = null, endereco = null, genero = null, email = null, senhaHash = null;
     Date dt_nasc;
 
-    public UserRead(String nome, String cpf, String genero, String endereco, String email, Date dt_nasc) {
+    public UserRead(String nome, String email, String cpf, String genero, String endereco, Date dt_nasc) {
         this.nome = nome;
         this.cpf = cpf;
         this.genero = genero;

@@ -23,7 +23,6 @@ public class AuthController {
 
             // Armazena o ID do usuário na sessão
             UserSession.setLoggedInUserId(userLogin.getId_user());
-            System.out.println("ID do usuário armazenado: " + userLogin.getId_user()); // Log para depuração
             return token;
         } else {
             return null;
