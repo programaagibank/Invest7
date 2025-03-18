@@ -1,7 +1,7 @@
 package com.invest7.view;
 
 import com.invest7.controller.DataValidate;
-import com.invest7.controller.UserUpdateController;
+import com.invest7.controller.UserController;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class MenuUptade {
         String escolha = null;
         int opcaoGenero = 0;
         boolean digitoCerto = false;
-        UserUpdateController userUp = new UserUpdateController();
+        UserController userU = new UserController();
 
         System.out.println("*********** Menu de Uptade **********");
         System.out.println();
@@ -86,7 +86,7 @@ public class MenuUptade {
             }
         }
 
-        boolean    resultadoCliente = userUp.uptadeUser(nome, endereco,genero, data_nasc);
+        boolean    resultadoCliente = userU.uptadeUser(nome, endereco,genero, data_nasc);
         if (!resultadoCliente) {
             System.out.println("Ocorreu algum problema na hora de atualizar os dados!!! ");
             System.out.println();

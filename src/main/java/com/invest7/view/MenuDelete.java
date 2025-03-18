@@ -1,13 +1,14 @@
 package com.invest7.view;
 
-import com.invest7.controller.UserDropController;
+import com.invest7.controller.UserController;
 
 import java.util.Scanner;
 
 public class MenuDelete {
 
     public void confirmarDelete(){
-        UserDropController user = new UserDropController();
+        //UserDropController user = new UserDropController();
+        UserController user = new UserController();
         int escolhas =0;
         boolean deuCerto = false;
         String email = null, senha = null;
