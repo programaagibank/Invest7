@@ -20,11 +20,12 @@ public class LoginView {
         senha = sc.nextLine();
 
         AuthController authController = new AuthController();
-        boolean resultado = authController.login(email,senha);
+        String resultado = authController.login(email,senha);
 
-        if (!resultado){
+        if (resultado== null){
             System.out.println("usuario nao encontrado");
         } else {
+            System.out.println("Login Realizado!! ");
             menuPrincipal.ExibirMenuPrincipal();
         }
 

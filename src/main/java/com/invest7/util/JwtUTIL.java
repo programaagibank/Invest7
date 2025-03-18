@@ -1,4 +1,3 @@
-/*
 package com.invest7.util;
 
 import io.jsonwebtoken.Claims;
@@ -8,41 +7,34 @@ import io.jsonwebtoken.security.Keys;
 
 import java.util.Date;
 import javax.crypto.SecretKey;
+import java.util.Base64;
 
-public class JwtUtil {
-    private static final String SECRET_KEY = "ChaveZuperSecreta"; // ⚠️ Atenção em produção!
+public class JwtUTIL {
+    private static final String SECRET_KEY_BASE64 = "pEUe9DYTuLaEw7y4c2Qn721AdCfNCNs6+ojh9/0cpmU="; // ⚠️ Salvar de forma segura
     private static final long EXPIRATION_TIME = 86400000; // 24 horas
 
-    // Método para gerar o token JWT
-    public static String generateToken(String email) {
-        // Criar uma chave segura baseada na string SECRET_KEY
-        SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(Base64.getDecoder().decode(SECRET_KEY_BASE64));
 
+    public static String generateToken(String email) {
         return Jwts.builder()
-                .setSubject(email)   // Define o email do usuário como "dono" do token
-                .setIssuedAt(new Date())  // Data de criação
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))  // Expiração
-                .signWith(key, SignatureAlgorithm.HS256)  // Algoritmo de assinatura
+                .setSubject(email)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    // Método para validar o token e extrair o email
     public static String validateToken(String token) {
         try {
-            // Criar uma chave segura baseada na string SECRET_KEY
-            SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
-
             Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(key)  // Usa a chave secreta para decodificar
+                    .setSigningKey(SECRET_KEY)
                     .build()
                     .parseClaimsJws(token)
                     .getBody();
 
-            return claims.getSubject();  // Retorna o email do usuário
+            return claims.getSubject();
         } catch (Exception e) {
-            return null;  // Token inválido ou expirado
+            return null;
         }
     }
 }
-
- */

@@ -3,7 +3,6 @@ package com.invest7.view;
 import java.util.Scanner;
 
 public class MenuInicial {
-
     public void exibirMenuInicial(){
         Scanner sc = new Scanner(System.in);
 
@@ -24,7 +23,7 @@ public class MenuInicial {
                     break;
                 case "2":
                     CadastroView cadastroView = new CadastroView();
-                    System.out.println("Cadastro selecionado");
+                    cadastroView.CriarUsuario();
                     break;
                 case "3":
                     // Código para fazer prévia de simulação
@@ -46,4 +45,5 @@ public class MenuInicial {
         sc.close();
 
     }
+
 }

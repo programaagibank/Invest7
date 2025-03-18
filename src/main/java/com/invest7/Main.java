@@ -12,10 +12,11 @@ public class Main {
     public static final String AMARELO = "\033[33m";
     public static final String ROXO = "\033[35m";
     public static final String NEGRITO = "\033[1m";
+    public static final String LIMPAR_TELA = "\033[H\033[2J";
 
     public static void main(String[] args) {
-        MenuInicial menuInicial = new MenuInicial();
 
+        MenuInicial menuInicial = new MenuInicial();
         System.out.println(CIANO + " ||=========================================================||" + RESET);
         System.out.println(CIANO + " ***********Olá. Bem vindo ao Invest7: *********** " + RESET);
 
