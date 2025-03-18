@@ -1,7 +1,6 @@
 package com.invest7.view;
 
 import com.invest7.controller.UserController;
-
 import java.util.Scanner;
 
 public class LoginView {
