@@ -2,6 +2,7 @@ package com.invest7.view;
 
 import com.invest7.controller.DataValidate;
 import com.invest7.controller.UserController;
+import com.invest7.model.UserModel;
 
 import java.util.Scanner;
 
@@ -85,6 +86,7 @@ public class MenuUptade {
                 sc.next();
             }
         }
+
 
         boolean    resultadoCliente = userU.uptadeUser(nome, endereco,genero, data_nasc);
         if (!resultadoCliente) {

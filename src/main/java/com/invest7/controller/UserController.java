@@ -5,6 +5,9 @@ import com.invest7.dao.*;
 import com.invest7.model.UserModel;
 import com.invest7.util.JwtUTIL;
 import com.invest7.view.MenuInicial;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class UserController {
     public boolean verificaCPF(String cpf){
@@ -17,9 +20,9 @@ public class UserController {
         return cpfCliente.verificaEmail(email);
     }
 
-    public boolean criarUser(String nome, String email, String senha, String cpf, String endereco,String genero, String dt_nasc){
+    public boolean criarUser(String nome, String email, String senha, String cpf, String endereco,String genero, String dt_nasc, int id_perfil){
         UserDAO userDAO = new UserDAO();
-        UserModel user = new UserModel(nome, cpf, endereco, email, senha, genero, dt_nasc);
+        UserModel user = new UserModel(nome, cpf, endereco, email, senha, genero, dt_nasc, id_perfil);
         user = userDAO.createUser(user);
         if (user.getId_user() > 0){
             UserSession.setLoggedInUserId(user.getId_user());
@@ -62,28 +65,37 @@ public class UserController {
         int id_user = UserSession.getLoggedInUserId();
         UserModel user = userDao.atualizarUser(id_user, nome, genero, endereco, dt_nasc);
 
-        if (user != null){ return true;}
+        if (user != null){
+
+            return true;}
         else {return false;}
     }
 
     public UserModel  lerUser(){
         int userId = UserSession.getLoggedInUserId();
         UserDAO userDAO= new UserDAO();
-      UserModel user = userDAO.readUser(new UserModel(userId));
+        UserModel user = userDAO.readUser(new UserModel(userId));
         return user;
 
     }
 
     public boolean deletarConta(String email, String senha){
-        boolean exite = false;
+        boolean existe = false;
         UserDAO user = new UserDAO();
         UserController userCreate = new UserController();
-        exite = userCreate.verificaEmail(email);
-        if (exite) {
+        existe = userCreate.verificaEmail(email);
+        if (existe) {
             user.deletarBanco(new UserModel(email));
             return true;
         } else {
             return false;
         }
     }
+
+    public UserModel atualizarPerfil(UserModel user){
+        UserDAO dao = new UserDAO();
+        UserModel userR = dao.formsUp(user);
+        return user;
+    }
+
 }

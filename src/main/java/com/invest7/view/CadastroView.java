@@ -15,7 +15,7 @@ public class CadastroView {
         DataValidate data = new DataValidate();
         HashSenha senhacrip = new HashSenha();
         String escolha = null;
-        int opcaoGenero = 0;
+        int opcaoGenero = 0, perfil_id =0;
         boolean digitoCerto = false;
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         UserController userC = new UserController();
@@ -149,8 +149,19 @@ public class CadastroView {
 
         senhaHash = senhacrip.hashSenha(senha); //passa a senha cadastrada e transforma em hash
 
-
-        boolean    resultadoCliente = userC.criarUser(nome, email, senhaHash, cpf, endereco,genero, data_nasc);
+        digitoCerto = false;
+        while (!digitoCerto) {
+            FormularioPerfilInvestidor formulario = new FormularioPerfilInvestidor();
+           perfil_id =  formulario.calcularPontuacao();
+            if (perfil_id > 0) {
+                System.out.println("Perfil Realizado");
+                digitoCerto = true;
+            } else {
+                System.out.println("Endereco Incorreto, digite novamente...");
+                sc.next();
+            }
+        }
+        boolean    resultadoCliente = userC.criarUser(nome, email, senhaHash, cpf, endereco,genero, data_nasc, perfil_id);
         if (!resultadoCliente) {
             System.out.println("Por algum motivo deu erro, faça o cadastro novamente!!");
         } else {
