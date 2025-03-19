@@ -1,5 +1,7 @@
 package com.invest7.model;
-class Fiis extends Produto {
+public class Fiis extends Produto {
+    private int qtdCotas;
+    private int reinvestir;
     private double txIr;
     private double precoFiis;
     private double dividendYield;
@@ -13,6 +15,12 @@ class Fiis extends Produto {
         this.dividendYield = dividendYield;
         this.desvioCotas = desvioCotas;
         this.desvioDividendos = desvioDividendos;
+    }
+
+    public Fiis(double valorInvestido, double aporte, int meses, int qtdCotas, int reinvestir) {
+        super(valorInvestido, aporte, meses);
+        this.qtdCotas = qtdCotas;
+        this.reinvestir = reinvestir;
     }
 
     public void calcularDividendos() {
@@ -58,5 +66,21 @@ class Fiis extends Produto {
 
     public void setDesvioDividendos(double desvioDividendos) {
         this.desvioDividendos = desvioDividendos;
+    }
+
+    public int getQtdCotas() {
+        return qtdCotas;
+    }
+
+    public void setQtdCotas(int qtdCotas) {
+        this.qtdCotas = qtdCotas;
+    }
+
+    public int getReinvestir() {
+        return reinvestir;
+    }
+
+    public void setReinvestir(int reinvestir) {
+        this.reinvestir = reinvestir;
     }
 }

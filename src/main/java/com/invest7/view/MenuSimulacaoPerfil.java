@@ -2,9 +2,6 @@ package com.invest7.view;
 
 import java.util.Scanner;
 
-import static com.invest7.view.MenuPerfilConservador.simulacaoPerfilConservador;
-import static com.invest7.view.MenuPerfilModerado.simulacaoPerfilModerado;
-import static com.invest7.view.MenuPerfilArrojado.simulacaoPerfilArrojado;
 
 
 public class MenuSimulacaoPerfil {

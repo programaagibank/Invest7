@@ -1,6 +1,7 @@
 package com.invest7.model;
 
 class Acoes extends Produto {
+    private int qtdAcoes;
     private double txIr;
     private double precoAcao;
     private double desvio;

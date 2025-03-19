@@ -1,48 +1,25 @@
 package com.invest7.controller;
-
+import com.invest7.dao.FiisDAO;
+import com.invest7.model.Fiis;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
 
 public class CalculadoraVariavel {
-    static Scanner sc = new Scanner(System.in);
-    static DecimalFormat df = new DecimalFormat("#,##0.00");
-    public static void main(String[] args) {
 
-        simularFundoImobiliario(sc, df);
-        simularAcao(sc, df);
-    }
-
-    public static void simularFundoImobiliario(Scanner sc, DecimalFormat df) {
-        double saldoDividendos = 0;
-
-        System.out.print("Digite o preço do ativo: R$ ");
-        double precoCota = sc.nextDouble();
-
-        System.out.print("Digite a quantidade de cotas compradas: ");
-        int quantidadeCotas = sc.nextInt();
-
-        System.out.print("Digite o dividendo mensal por cota: R$ ");
-        double dividendoPorCota = sc.nextDouble();
-
-        System.out.print("Digite o número de meses para a simulação: ");
-        int meses = sc.nextInt();
-
-        System.out.print("Digite o valor do aporte: R$ ");
-        double valorAporte = sc.nextDouble();
-
-        System.out.print("Deseja reinvestir os dividendos? (s/n): ");
-        char reinvestir = sc.next().toLowerCase().charAt(0);
-
-        /*System.out.println("\nSimulação do rendimento dos dividendos:\n");
-        System.out.println("Mês\tCotas\tDividendos\t\tSaldo");*/
-
+    public Fiis simularFundoImobiliario(Fiis calculadoraV) {
+        FiisDAO dao = new FiisDAO();
+        Fiis resultados = dao.buscarFiis(new Fiis());
+        double saldoDividendos = 0, dividendoPorCota = calculadoraV.getDividendYield(),
+                valorAporte = calculadoraV.getAporte(), precoCota = calculadoraV.getPrecoFiis(); ;
+        int meses = calculadoraV.getMeses(), quantidadeCotas = calculadoraV.getQtdCotas(),
+                reinvestir = calculadoraV.getReinvestir();
 
         for (int i = 1; i <= meses; i++) {
             double dividendosRecebidos = quantidadeCotas * dividendoPorCota;
             saldoDividendos += dividendosRecebidos + valorAporte;
 
-            if (reinvestir == 's') {
+            if (reinvestir == 1) {
                 int novasCotas = (int) (saldoDividendos / precoCota);
                 quantidadeCotas += novasCotas;
                 saldoDividendos -= novasCotas * precoCota;
@@ -51,16 +28,9 @@ public class CalculadoraVariavel {
                 quantidadeCotas += novasCotasAporte;
                 saldoDividendos -= novasCotasAporte * precoCota;
             }
-
-            //System.out.println(i + "\t" + quantidadeCotas + "\t\tR$ " + df.format(dividendosRecebidos) + "\t\tR$ " + df.format(saldoDividendos));
         }
 
-        System.out.println("\nTotal de cotas ao final da simulação: " + quantidadeCotas);
-        double saldoCotas = quantidadeCotas*precoCota;
-        double desvioCota = saldoCotas * 0.04 ;
-        System.out.println("Saldo em cotas: entre R$ " + df.format((saldoCotas - desvioCota)) + " e " + df.format((saldoCotas + desvioCota)));
-        double desvioDiv = saldoDividendos * 0.04;
-        System.out.println("Saldo em dividendos com desvio: R$ " + df.format(saldoDividendos - desvioDiv) + " até " + df.format(saldoDividendos + desvioDiv) + "\n");
+        return null;
     }
 
     public static void simularAcao(Scanner sc, DecimalFormat df) {
@@ -71,8 +41,7 @@ public class CalculadoraVariavel {
         System.out.print("Digite o preço de venda da ação: R$ ");
         double precoVenda = sc.nextDouble();
 
-        System.out.print("Digite a quantidade de ações compradas: ");
-        int quantidade = sc.nextInt();
+
 
         double custoTotal = precoCompra * quantidade;
         double valorVenda = precoVenda * quantidade;
