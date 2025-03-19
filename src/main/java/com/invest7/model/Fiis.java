@@ -1,5 +1,6 @@
 package com.invest7.model;
 public class Fiis extends Produto {
+    private double aporte;
     private int qtdCotas;
     private int reinvestir;
     private double txIr;
@@ -18,14 +19,31 @@ public class Fiis extends Produto {
     }
 
     public Fiis(double valorInvestido, double aporte, int meses, int qtdCotas, int reinvestir) {
-        super(valorInvestido, aporte, meses);
+        super(valorInvestido, meses);
+        this.aporte = aporte;
         this.qtdCotas = qtdCotas;
         this.reinvestir = reinvestir;
+    }
+
+    public Fiis(String nome, double precoFiis, double dividendYield, double desvioCotas, double desvioDividendos) {
+        super(nome);
+        this.precoFiis = precoFiis;
+        this.dividendYield = dividendYield;
+        this.desvioCotas = desvioCotas;
+        this.desvioDividendos = desvioDividendos;
     }
 
     public void calcularDividendos() {
         double dividendos = getValorInvestido() * (dividendYield / 100);
         System.out.println("Dividendos Mensais: R$ " + dividendos);
+    }
+
+    public double getAporte() {
+        return aporte;
+    }
+
+    public void setAporte(double aporte) {
+        this.aporte = aporte;
     }
 
     public double getTxIr() {
@@ -83,4 +101,12 @@ public class Fiis extends Produto {
     public void setReinvestir(int reinvestir) {
         this.reinvestir = reinvestir;
     }
+
+    public double calculaSaldoCotas(int qtdCotas, double precoCota) {
+        return qtdCotas*precoCota;
+    }
+
+
+
+
 }

@@ -1,58 +1,59 @@
 package com.invest7.controller;
+import com.invest7.dao.AcoesDao;
 import com.invest7.dao.FiisDAO;
 import com.invest7.model.Fiis;
-import java.util.Scanner;
-import java.text.DecimalFormat;
-
+import com.invest7.model.Acoes;
+import java.util.List;
 
 public class CalculadoraVariavel {
 
-    public Fiis simularFundoImobiliario(Fiis calculadoraV) {
+    public List<Fiis> simularFundoImobiliario(Fiis calculadoraV) {
         FiisDAO dao = new FiisDAO();
-        Fiis resultados = dao.buscarFiis(new Fiis());
-        double saldoDividendos = 0, dividendoPorCota = calculadoraV.getDividendYield(),
-                valorAporte = calculadoraV.getAporte(), precoCota = calculadoraV.getPrecoFiis(); ;
-        int meses = calculadoraV.getMeses(), quantidadeCotas = calculadoraV.getQtdCotas(),
-                reinvestir = calculadoraV.getReinvestir();
+        List<Fiis> resultados = dao.buscarFiis(new FiisDAO());
+        for (Fiis fiis : resultados) {
+            double saldoDividendos = 0, dividendoPorCota = fiis.getDividendYield(),
+                    valorAporte = calculadoraV.getAporte(), precoCota = fiis.getPrecoFiis(),
+                    dvCotas = fiis.getDesvioCotas(), dvDiv = fiis.getDesvioDividendos();
+            int meses = calculadoraV.getMeses(), quantidadeCotas = calculadoraV.getQtdCotas(),
+                    reinvestir = calculadoraV.getReinvestir();
 
-        for (int i = 1; i <= meses; i++) {
-            double dividendosRecebidos = quantidadeCotas * dividendoPorCota;
-            saldoDividendos += dividendosRecebidos + valorAporte;
+            for (int i = 1; i <= meses; i++) {
+                double dividendosRecebidos = quantidadeCotas * dividendoPorCota;
+                saldoDividendos += dividendosRecebidos + valorAporte;
 
-            if (reinvestir == 1) {
-                int novasCotas = (int) (saldoDividendos / precoCota);
-                quantidadeCotas += novasCotas;
-                saldoDividendos -= novasCotas * precoCota;
-            } else {
-                int novasCotasAporte = (int) (valorAporte / precoCota);
-                quantidadeCotas += novasCotasAporte;
-                saldoDividendos -= novasCotasAporte * precoCota;
+                if (reinvestir == 1) {
+                    int novasCotas = (int) (saldoDividendos / precoCota);
+                    quantidadeCotas += novasCotas;
+                    saldoDividendos -= novasCotas * precoCota;
+                } else {
+                    int novasCotasAporte = (int) (valorAporte / precoCota);
+                    quantidadeCotas += novasCotasAporte;
+                    saldoDividendos -= novasCotasAporte * precoCota;
+                }
             }
-        }
 
+            //criar no model os atributos abaixo
+            double saldoCotas = calculadoraV.calculaSaldoCotas(quantidadeCotas, precoCota);
+            double saldoCotasReal = saldoCotas - saldoCotas * dvCotas;
+            double saldoDivReal = saldoDividendos - saldoDividendos * dvDiv;
+        }
         return null;
     }
-
-    public static void simularAcao(Scanner sc, DecimalFormat df) {
-
-        System.out.print("Digite o preço de compra da ação: R$ ");
-        double precoCompra = sc.nextDouble();
-
-        System.out.print("Digite o preço de venda da ação: R$ ");
-        double precoVenda = sc.nextDouble();
-
-
+}
+/*
+    public Acoes simularAcao(Acoes calculadoraV) {
+        AcoesDao dao = new AcoesDao();
+        Acoes resultados = dao.buscarAcoes(new Acoes());
+        double precoCompra = calculadoraV.getPrecoAcao(), precoVenda = calculadoraV.getPrecoVenda();
+        int quantidade = calculadoraV.getQtdAcoes();
 
         double custoTotal = precoCompra * quantidade;
         double valorVenda = precoVenda * quantidade;
         double saldo = valorVenda - custoTotal;
 
-        System.out.println("\nResumo da operação:");
-        System.out.println("Custo total: R$ " + df.format(custoTotal));
-        System.out.println("Valor da venda: R$ " + df.format(valorVenda));
-
-        if (saldo > 0) System.out.println("Lucro: R$ " + df.format(saldo));
-        else if (saldo < 0) System.out.println("Prejuízo: R$ " + df.format(Math.abs(saldo)));
-        else System.out.println("Você não teve lucro nem prejuízo.");
+        return null;
     }
 }
+
+
+ */

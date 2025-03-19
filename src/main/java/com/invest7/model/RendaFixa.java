@@ -1,10 +1,12 @@
 package com.invest7.model;
 
 class RendaFixa extends Produto {
+    private double aporte;
     private double rentabilidadeFixa;
     private double juros;
     private double txPrefixado;
     private double txPosfixado;
+    //taxa IR?
 
     public RendaFixa(String nome, double valorInvestido, double rentabilidadeFixa, double juros, double txPrefixado, double txPosfixado) {
         super(nome, valorInvestido);
@@ -17,6 +19,14 @@ class RendaFixa extends Produto {
     public void calcularRendimento() {
         double rendimento = getValorInvestido() * (rentabilidadeFixa / 100);
         System.out.println("Rendimento Anual: R$ " + rendimento);
+    }
+
+    public double getAporte() {
+        return aporte;
+    }
+
+    public void setAporte(double aporte) {
+        this.aporte = aporte;
     }
 
     public double getRentabilidadeFixa() {
