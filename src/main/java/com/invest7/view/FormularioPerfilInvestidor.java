@@ -4,15 +4,8 @@ import java.util.Scanner;
 
 public class FormularioPerfilInvestidor {
 
-    public static void main(String[] args) {
+    public int calcularPontuacao() {
         Scanner scanner = new Scanner(System.in);
-        int pontuacao = calcularPontuacao(scanner);
-        scanner.close();
-
-        exibirResultado(pontuacao);
-    }
-
-    private static int calcularPontuacao(Scanner scanner) {
         int pontuacao = 0;
         String[][] perguntas = {
                 {"Qual é o seu principal objetivo ao investir?", "A) Preservar o capital com segurança, mesmo que o retorno seja baixo", "B) Equilibrar segurança e crescimento do patrimônio", "C) Buscar altos retornos, mesmo que isso envolva riscos maiores"},
@@ -53,21 +46,27 @@ public class FormularioPerfilInvestidor {
             }
         }
 
-        return pontuacao;
+        int perfi_id =  exibirResultado(pontuacao);
+        return perfi_id;
+
     }
 
-    private static void exibirResultado(int pontuacao) {
+    private static int exibirResultado(int pontuacao) {
         System.out.println("\n===== Resultado do Perfil de Investidor =====");
         System.out.println("Pontuação total: " + pontuacao);
 
         if (pontuacao >= 100 && pontuacao <= 130) {
             System.out.println("🔹 Perfil Conservador: Você valoriza estabilidade e baixa tolerância ao risco.");
+            return 1;
         } else if (pontuacao >= 140 && pontuacao <= 170) {
             System.out.println("🔹 Perfil Moderado: Você busca um equilíbrio entre segurança e crescimento.");
+            return 2;
         } else if (pontuacao >= 180 && pontuacao <= 200) {
             System.out.println("🔹 Perfil Arrojado: Você tem alta tolerância ao risco e foca na rentabilidade.");
+            return 3;
         } else {
             System.out.println("🔹 Perfil Indefinido: Tente refazer o teste.");
+            return 0;
         }
     }
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class PreviaFormPerfilInvest {
-    public static void main(String[] args) {
+    public void previaForms() {
         Scanner scanner = new Scanner(System.in);
 
         String[] questoes = {
@@ -50,6 +50,6 @@ public class PreviaFormPerfilInvest {
             System.out.println("Perfil Indefinido: Tente refazer o teste.");
         }
 
-        scanner.close();
+
     }
 }

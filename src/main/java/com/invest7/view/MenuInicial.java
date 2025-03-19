@@ -26,12 +26,13 @@ public class MenuInicial {
                     cadastroView.CriarUsuario();
                     break;
                 case "3":
-                    // Código para fazer prévia de simulação
-                    System.out.println("Prévia de simulação selecionada");
+                    // Código para fazer prévia de simulado
+                    System.out.println("Prévia de Simulado");
                     break;
                 case "4":
-                    // Código para fazer prévia de questionário
-                    System.out.println("Prévia de questionário selecionada");
+                    PreviaFormPerfilInvest previaFomrs = new PreviaFormPerfilInvest();
+                    previaFomrs.previaForms();
+
                     break;
                 case "fim":
                     System.out.println("Saindo...");

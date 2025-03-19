@@ -8,8 +8,8 @@ import java.sql.*;
 public class UserDAO {
 
     public UserModel createUser(UserModel userC) {
-        String sql = "INSERT INTO usuarios (nome, email, senha, data_nascimento, genero, endereco, cpf) \n" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?); ";
+        String sql = "INSERT INTO usuarios (nome, email, senha, data_nascimento, genero, endereco, cpf, id_perfil) \n" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, userC.getNome());
@@ -19,6 +19,8 @@ public class UserDAO {
             stmt.setString(5, userC.getGenero());
             stmt.setString(6, userC.getEndereco());
             stmt.setString(7, userC.getCpf());
+            stmt.setInt(8, userC.getId_perfil());
+
 
             int linhasAfetadas = stmt.executeUpdate();
             if (linhasAfetadas > 0) {
@@ -82,7 +84,8 @@ public class UserDAO {
 
     public UserModel readUser(UserModel userR){
         UserModel user = null;
-        String sql = "SELECT nome, email, data_nascimento, genero, endereco, cpf FROM usuarios WHERE id_user = ?";
+        String sql = "SELECT u.nome, u.email, u.cpf,  u.genero, u.endereco, u.data_nascimento, p.descricao_perfil" +
+                " FROM  usuarios u JOIN perfil_investidor p ON u.id_perfil = p.id_perfil WHERE u.id_user = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -97,9 +100,8 @@ public class UserDAO {
                             rs.getString("cpf"),
                             rs.getString("genero"),
                             rs.getString("endereco"),
-                            rs.getString("data_nascimento")
-
-
+                            rs.getString("data_nascimento"),
+                            rs.getString("p.descricao_perfil")
                     );
                 }
             }
@@ -132,4 +134,23 @@ public class UserDAO {
         }
     }
 
+    public UserModel formsUp(UserModel user){
+        String sql = "UPDATE usuarios SET id_perfil= ? WHERE id_user = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setInt(1, user.getId_perfil());
+            stmt.setInt(2, user.getId_user());
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                return user;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar Cadastro no Banco de Dados " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
