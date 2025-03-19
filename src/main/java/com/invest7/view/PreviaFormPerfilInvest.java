@@ -17,14 +17,14 @@ public class PreviaFormPerfilInvest {
         };
 
         Map<String, Integer> pontuacoes = new HashMap<>();
-        pontuacoes.put("A", 0);  // 8
-        pontuacoes.put("B", 50); // 9
-        pontuacoes.put("C", 100); // 10
+        pontuacoes.put("A", 0);
+        pontuacoes.put("B", 50);
+        pontuacoes.put("C", 100);
 
         int pontuacaoTotal = 0;
 
         for (String questao : questoes) {
-            System.out.println(questao); // 13
+            System.out.println(questao);
             String resposta;
 
             do {
