@@ -16,7 +16,7 @@ public class MenuSimulacaoPerfil {
 
         escolhas = sc.nextInt();
 
-        switch (escolhas){
+       /* switch (escolhas){
             case 1:
                 simulacaoPerfilConservador();
                 break;
@@ -29,6 +29,8 @@ public class MenuSimulacaoPerfil {
             default:
                 break;
         }
+
+        */
 
     }
 }
