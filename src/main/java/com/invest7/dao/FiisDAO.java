@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FiisDAO {
 
-        public List<Fiis> buscarFiis(FiisDAO fiis) {
+        public List<Fiis> buscarFiis() {
             List<Fiis> fiisAll = new ArrayList<>();
             String sql = "SELECT nome_prod, preco_fiis, dividend_yeld, desvio_cotas" +
                     ", desvio_dividendos FROM fiis";
@@ -19,7 +19,7 @@ public class FiisDAO {
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
 
                 try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
+                    while (rs.next()) {
                         Fiis fii = new Fiis(
                                 rs.getString("nome_prod"),
                                 rs.getDouble("preco_fiis"),
