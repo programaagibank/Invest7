@@ -55,19 +55,27 @@ public class CalculadoraVariavel {
     }
 }
 /*
-    public Acoes simularAcao(Acoes calculadoraV) {
-        AcoesDao dao = new AcoesDao();
-        Acoes resultados = dao.buscarAcoes(new Acoes());
-        double precoCompra = calculadoraV.getPrecoAcao(), precoVenda = calculadoraV.getPrecoVenda();
-        int quantidade = calculadoraV.getQtdAcoes();
+ public Acoes simularAcao(Acoes calculadoraV) {
+       AcoesDao dao = new AcoesDao();
+       Acoes resultados = dao.buscarAcoes(new Acoes());
+       double precoCompra = calculadoraV.getPrecoAcao(),
+               precoVenda = calculadoraV.getPrecoVenda();
 
-        double custoTotal = precoCompra * quantidade;
-        double valorVenda = precoVenda * quantidade;
-        double saldo = valorVenda - custoTotal;
 
-        return null;
-    }
+
+
+double capital = calculadoraV.getValorInvestido();
+       int quantidade = (int) (capital / resultados.getPrecoAcao());
+       double txIr = calculadoraV.getTxIr();
+       double custoTotal = precoCompra * quantidade;
+       double valorVenda = precoVenda * quantidade;
+       double saldo = valorVenda - custoTotal;
+
+
+       if (saldo > 20000){
+           double saldoFinal = saldo - (saldo*txIr);
+       }
+       return null;
+   }
 }
-
-
- */
+*/
