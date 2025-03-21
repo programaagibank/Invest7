@@ -1,5 +1,5 @@
 package com.invest7.dao;
-import com.invest7.model.Fiis;
+import com.invest7.model.produtos.Fiis;
 import com.invest7.util.ConnectionFactory;
 
 import java.sql.Connection;

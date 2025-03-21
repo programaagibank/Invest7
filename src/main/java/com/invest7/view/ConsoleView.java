@@ -1,4 +1,4 @@
-package com.invest7.view;
+/*package com.invest7.view;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -100,3 +100,6 @@ public class ConsoleView {
         return String.format("%.2f%%", valor.multiply(BigDecimal.valueOf(100)));
     }
 }
+
+
+ */

@@ -1,9 +1,8 @@
 package com.invest7.view;
-
 import java.util.Scanner;
 
-class SimuladorInvestimentos {
-    public void exibirFaq() {
+class FaqSimuInvestimentos {
+    public static void exibirFaq() {
         Scanner scanner = new Scanner(System.in);
         String[] perguntas = {
                 "1 - O que é um simulador de investimentos?",
@@ -26,48 +25,14 @@ class SimuladorInvestimentos {
         int opcao;
         do {
             System.out.println("\nFAQ - Simulador de Investimentos");
-            for (String pergunta : perguntas) {
-                System.out.println(pergunta);
-            }
+            for (String pergunta : perguntas) System.out.println(pergunta);
 
             System.out.print("\nDigite o número da pergunta para ver a resposta: ");
             opcao = scanner.nextInt();
 
-            if (opcao >= 1 && opcao <= perguntas.length) {
-                System.out.println("\n" + respostas[opcao - 1]);
-            } else {
-                System.out.println("\nOpção inválida. Escolha um número entre 1 e " + perguntas.length);
-            }
+            if (opcao >= 1 && opcao <= perguntas.length) System.out.println("\n" + respostas[opcao - 1]);
+            else System.out.println("\nOpção inválida. Escolha um número entre 1 e " + perguntas.length);
+
         } while (opcao != perguntas.length);
-    }
-}
-
-public class FaqSimuInvestimentos {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        SimuladorInvestimentos simulador = new SimuladorInvestimentos();
-
-        int opcao;
-        do {
-            System.out.println("\n===== Menu Principal =====");
-            System.out.println("1 - Acessar FAQ");
-            System.out.println("2 - Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-
-            switch (opcao) {
-                case 1:
-                    simulador.exibirFaq();
-                    break;
-                case 2:
-                    System.out.println("Saindo do programa...");
-                    break;
-                default:
-                    System.out.println("Opção inválida! Escolha 1 ou 2.");
-            }
-        } while (opcao != 2);
-
-        scanner.close();
-        System.out.println("\nObrigado por usar o Simulador de Investimentos!");
     }
 }

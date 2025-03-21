@@ -1,4 +1,4 @@
-package com.invest7.model;
+package com.invest7.model.produtos;
 
 public class Acoes extends Produto {
     private int qtdAcoes;

@@ -1,8 +1,7 @@
-package com.invest7.view;
+package com.invest7.view.menus.user;
 
 import com.invest7.controller.DataValidate;
-import com.invest7.controller.UserController;
-import com.invest7.model.UserModel;
+import com.invest7.controller.user.UserController;
 
 import java.util.Scanner;
 

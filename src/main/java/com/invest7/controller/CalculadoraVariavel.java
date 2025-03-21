@@ -1,8 +1,6 @@
 package com.invest7.controller;
-import com.invest7.dao.AcoesDao;
 import com.invest7.dao.FiisDAO;
-import com.invest7.model.Fiis;
-import com.invest7.model.Acoes;
+import com.invest7.model.produtos.Fiis;
 
 import java.util.ArrayList;
 import java.util.List;

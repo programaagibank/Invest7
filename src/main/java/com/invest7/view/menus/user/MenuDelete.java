@@ -1,6 +1,8 @@
-package com.invest7.view;
+package com.invest7.view.menus.user;
 
-import com.invest7.controller.UserController;
+import com.invest7.controller.user.UserController;
+import com.invest7.view.MenuPrincipal;
+import com.invest7.view.menus.MenuInicial;
 
 import java.util.Scanner;
 

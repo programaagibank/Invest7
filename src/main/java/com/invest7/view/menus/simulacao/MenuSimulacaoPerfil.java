@@ -1,4 +1,4 @@
-package com.invest7.view;
+package com.invest7.view.menus.simulacao;
 
 import java.util.Scanner;
 

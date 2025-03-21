@@ -1,4 +1,4 @@
-package com.invest7.controller;
+package com.invest7.controller.user;
 
 public class UserSession {
     private static int loggedInUserId = -1; // Valor padrão para indicar "não logado"

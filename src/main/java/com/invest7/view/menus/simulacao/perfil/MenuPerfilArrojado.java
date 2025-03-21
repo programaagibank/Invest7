@@ -1,7 +1,7 @@
-package com.invest7.view;
+package com.invest7.view.menus.simulacao.perfil;
 
 import com.invest7.controller.CalculadoraRFprovisoria;
-import com.invest7.controller.CalculadoraVariavel;
+
 import java.util.Scanner;
 
 public class MenuPerfilArrojado {
