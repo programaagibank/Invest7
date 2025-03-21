@@ -1,13 +1,10 @@
-package com.invest7.controller;
+package com.invest7.controller.user;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.invest7.dao.*;
 import com.invest7.model.UserModel;
 import com.invest7.util.JwtUTIL;
-import com.invest7.view.MenuInicial;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.invest7.view.menus.MenuInicial;
 
 public class UserController {
     public boolean verificaCPF(String cpf){

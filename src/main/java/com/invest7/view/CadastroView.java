@@ -1,11 +1,11 @@
 package com.invest7.view;
 
 import com.invest7.controller.*;
+import com.invest7.controller.user.CpfValidate;
+import com.invest7.controller.user.UserController;
 
-import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 
 public class CadastroView {

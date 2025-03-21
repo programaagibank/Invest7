@@ -1,14 +1,13 @@
-package com.invest7.view;
+package com.invest7.view.menus.simulacao;
 import com.invest7.controller.CalculadoraVariavel;
-import com.invest7.model.Acoes;
-import com.invest7.model.Fiis;
+import com.invest7.model.produtos.Fiis;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuSimulacaoCompleta {
 
-    public void simulacaoCompleta(){
+    public static void simulacaoCompleta(){
         Scanner sc = new Scanner(System.in);
         double capital = 0.0, aporteMensal = 0.0, precoCota = 0.0,
                 dividendoPorCota = 0.0, precoCompra =0.0, precoVenda = 0.0;
@@ -52,18 +51,7 @@ public class MenuSimulacaoCompleta {
             }
         }
 
-        System.out.println("-----------Fundo Imob--------");
-        /*digitoCerto = false;
-        while (!digitoCerto) {
-            System.out.println("4- Digite o preço do ativo: R$ ");
-            if (sc.hasNextInt()) {
-                precoCota = sc.nextInt();
-                digitoCerto = true;
-            } else {
-                System.out.println("Valor Incorreto, digite novamente...");
-                sc.next();
-            }
-        }*/
+        System.out.println("-----------Fundo Imobiliário--------");
 
         digitoCerto = false;
         while (!digitoCerto) {
@@ -76,18 +64,6 @@ public class MenuSimulacaoCompleta {
                 sc.next();
             }
         }
-
-        /*digitoCerto = false;
-        while (!digitoCerto) {
-            System.out.println("6- Digite o dividendo mensal por cota: R$ ");
-            if (sc.hasNextInt()) {
-                dividendoPorCota = sc.nextInt();
-                digitoCerto = true;
-            } else {
-                System.out.println("Valor Incorreto, digite novamente...");
-                sc.next();
-            }
-        }*/
 
         digitoCerto = false;
         while (!digitoCerto) {
@@ -102,17 +78,6 @@ public class MenuSimulacaoCompleta {
         }
 
         System.out.println("-----------Ações--------");
-        /*digitoCerto = false;
-        while (!digitoCerto) {
-            System.out.println("8- Digite o preço de compra da ação: R$ ");
-            if (sc.hasNextInt()) {
-                precoCompra = sc.nextDouble();
-                digitoCerto = true;
-            } else {
-                System.out.println("Valor Incorreto, digite novamente...");
-                sc.next();
-            }
-        }*/
 
         digitoCerto = false;
         while (!digitoCerto) {

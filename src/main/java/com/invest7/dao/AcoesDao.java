@@ -1,5 +1,5 @@
 package com.invest7.dao;
-import com.invest7.model.Acoes;
+import com.invest7.model.produtos.Acoes;
 
 
 public class AcoesDao {

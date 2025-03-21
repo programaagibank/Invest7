@@ -1,4 +1,4 @@
-package com.invest7.controller;
+package com.invest7.controller.user;
 
 import java.util.regex.Pattern;
 

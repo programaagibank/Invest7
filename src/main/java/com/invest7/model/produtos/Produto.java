@@ -1,4 +1,4 @@
-package com.invest7.model;
+package com.invest7.model.produtos;
 
 public class Produto {
     private int idProduto;

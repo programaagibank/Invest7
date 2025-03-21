@@ -1,4 +1,5 @@
-package com.invest7.model;
+package com.invest7.model.produtos;
+
 public class Fiis extends Produto {
     private double aporte;
     private int qtdCotas;

@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -43,3 +43,5 @@ public class InvestmentController {
         view.imprimirResultados(resultados);
     }
 }
+
+ */
