@@ -17,8 +17,9 @@ dependencies {
     compileOnly("javax.servlet:javax.servlet-api:4.0.1")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation ("org.junit.jupiter:junit-jupiter:5.7.2")
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
 }
 
