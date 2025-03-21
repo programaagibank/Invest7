@@ -15,11 +15,11 @@ public class RendaFixaCalculator {
     public static RendaFixa_Result calcularPoupanca(String nome, BigDecimal valorInicial, BigDecimal aporteMensal, int meses) {
         int dias = meses * 30;
         BigDecimal taxaMensal;
-        if (TAXA_SELIC.compareTo(new BigDecimal("0.085")) > 0) {
+        if (TAXA_SELIC.compareTo(new BigDecimal("0.085")) > 0)
             taxaMensal = new BigDecimal("0.005").add(TR_MENSAL);
-        } else {
+        else
             taxaMensal = TAXA_SELIC.multiply(new BigDecimal("0.7")).divide(BigDecimal.valueOf(12), MathContext.DECIMAL128).add(TR_MENSAL);
-        }
+
 
         BigDecimal average = calcularValorFuturo(valorInicial, aporteMensal, meses, taxaMensal, false, dias);
         BigDecimal pessimistic = calcularValorFuturo(valorInicial, aporteMensal, meses, taxaMensal.multiply(new BigDecimal("0.9")), false, dias);

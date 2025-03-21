@@ -1,11 +1,11 @@
-/*package com.invest7.view;
+package com.invest7.view;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-import model.InvestmentResult;
+import com.invest7.model.RendaFixa_Result;
 
 public class ConsoleView {
 
@@ -72,7 +72,7 @@ public class ConsoleView {
         System.out.println(AZUL + NEGRITO + "*******************************************" + RESET);
     }
 
-    public void imprimirResultados(List<InvestmentResult> resultados) {
+    public void imprimirResultados(List<RendaFixa_Result> resultados) {
         for (InvestmentResult res : resultados) {
             System.out.println("\n" + ROXO + NEGRITO + res.getName() + RESET);
             System.out.println(VERDE + "Proj. Pessimista" + RESET);
@@ -101,5 +101,3 @@ public class ConsoleView {
     }
 }
 
-
- */
